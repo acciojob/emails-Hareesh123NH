@@ -27,7 +27,7 @@ public class Gmail extends Email {
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
         Mail mail;
         if(inbox.size()==this.inboxCapacity){
-            mail=(Mail)this.inbox.get(0);
+            mail=this.inbox.get(0);
             this.trash.add(mail);
             this.inbox.remove(0);
         }
@@ -39,7 +39,7 @@ public class Gmail extends Email {
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
         //Numbers.removeIf(n -> (n % 3 == 0)); 
-        if(inbox.size()==0){
+        if(inbox.isEmpty()){
             return ;
         }
         for(Mail m:inbox){
@@ -103,13 +103,19 @@ public class Gmail extends Email {
     }
     public class Mail {
         private Date date;
-        @SuppressWarnings("unused")
-        private String sender;
         private String message;
+        private String sender;
         public Mail(Date date,String sender,String message){
             this.date=date;
             this.message=message;
-            this.sender=sender;
+        }
+
+        public String getSender() {
+            return sender;
+        }
+
+        public void setSender(String sender) {
+            this.sender = sender;
         }
     }
 }
