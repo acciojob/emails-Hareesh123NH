@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 public class Workspace extends Gmail{
 
-    private ArrayList<Meeting> calendar; // Stores all the meetings
+    private final ArrayList<Meeting> calendar; // Stores all the meetings
 
     public Workspace(String emailId) {
         // The inboxCapacity is equal to the maximum value an integer can store.
@@ -73,8 +73,10 @@ public class Workspace extends Gmail{
 
        return m.size();
     }
-    class mycomparator implements Comparator<Meeting> {
+    public class mycomparator implements Comparator<Meeting> {
         //@Override 
+        
+        @Override
         public int compare(Meeting m1, Meeting m2)
         {
             if (m1.getEndTime().compareTo(m2.getEndTime())<0) {

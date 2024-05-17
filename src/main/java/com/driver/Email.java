@@ -2,7 +2,7 @@ package com.driver;
 
 public class Email {
 
-    private String emailId;
+    private final String emailId;
     private String password;
 
     public Email(String emailId){
@@ -73,6 +73,5 @@ public class Email {
         }
         this.password = newPassword;
         System.out.println("Password changed successfully.");
-        return ;
     }
 }
